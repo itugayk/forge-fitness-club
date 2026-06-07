@@ -37,8 +37,6 @@ services:
       QUEUE_CONNECTION: database
     volumes:
       - storage_data:/var/www/html/storage/app
-    networks:
-      - forge
 
   mysql:
     image: mysql:8.0
@@ -55,13 +53,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 12
-    networks:
-      - forge
 
 volumes:
   mysql_data:
   storage_data:
-
-networks:
-  forge:
-    driver: bridge
