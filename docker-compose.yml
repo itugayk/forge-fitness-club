@@ -13,11 +13,14 @@ services:
     expose:
       - "80"
     environment:
+      # Coolify magic var: exposes the "app" service on port 80 via its proxy
+      # (Traefik) and provides the generated URL as $SERVICE_FQDN_APP.
+      SERVICE_FQDN_APP_80: "/"
       APP_NAME: "Forge Fitness Club"
       APP_ENV: production
       APP_KEY: "base64:wFlAGt07apYs7a5nt4B8i4pGBOElnIMFsUDxrC/XUQA="
       APP_DEBUG: "false"
-      APP_URL: "https://fitness.demo.dijifa.com"
+      APP_URL: "${SERVICE_FQDN_APP:-http://localhost}"
       APP_LOCALE: tr
       APP_FALLBACK_LOCALE: en
       APP_FAKER_LOCALE: tr_TR
