@@ -14,8 +14,8 @@
             <div class="max-w-3xl">
                 <x-ui.eyebrow label="İstanbul · Kadıköy" />
                 <h1 class="font-display text-6xl sm:text-7xl lg:text-8xl text-white uppercase leading-[0.88]">
-                    Kendini <span class="text-volt-300">Dövüştür.</span><br>
-                    Daha Güçlü <span class="text-stroke">Çık.</span>
+                    Gücünü <span class="text-volt-300">Keşfet.</span><br>
+                    Limitini <span class="text-stroke">Aş.</span>
                 </h1>
                 <p class="mt-6 text-lg sm:text-xl text-zinc-300 max-w-xl leading-relaxed">
                     Premium ekipman, 50+ haftalık grup dersi, uzman antrenörler ve seni hedefine

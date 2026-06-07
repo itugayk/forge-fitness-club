@@ -11,7 +11,7 @@ return [
     */
 
     'brand' => 'Forge Fitness Club',
-    'tagline' => 'Kendini Dövüştür. Daha Güçlü Çık.',
+    'tagline' => 'Gücünü Keşfet. Limitini Aş.',
     'description' => 'Forge Fitness Club; modern ekipman, grup dersleri, kişisel '
         .'antrenörlük ve beslenme danışmanlığıyla şehrin en enerjik spor kulübü.',
 
