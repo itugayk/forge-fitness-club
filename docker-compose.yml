@@ -8,8 +8,10 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
-    ports:
-      - "8080:80"
+    # No host port binding: Coolify's reverse proxy (Traefik) routes to port 80
+    # via the assigned domain. For purely-local use, add `ports: ["8080:80"]`.
+    expose:
+      - "80"
     environment:
       APP_NAME: "Forge Fitness Club"
       APP_ENV: production

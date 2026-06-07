@@ -44,11 +44,16 @@ Laravel 12 · Filament 3 · Livewire 3 · Tailwind CSS v4 · Alpine.js · MySQL
 docker compose up -d --build
 ```
 
-- Uygulama: **http://localhost:8080**
-- Yönetim paneli: **http://localhost:8080/admin**
 - İlk açılışta migrasyon + seed otomatik çalışır (MySQL hazır olunca).
+- `app` servisi port **80**'i `expose` eder; **Coolify/Traefik** gibi bir ters proxy
+  arkasında domain ile yayınlanır. Saf yerel erişim için compose'a
+  `ports: ["8080:80"]` ekleyip `http://localhost:8080` üzerinden açabilirsiniz.
 
 Servisler: `app` (nginx + php-fpm + supervisor) ve `mysql` (8.0).
+
+**Coolify ile deploy:** repoyu bir Coolify uygulaması olarak ekleyin
+(Build Pack = **Docker Compose**, compose yolu `/docker-compose.yml`). Coolify
+imajı kurar, app + MySQL'i ayağa kaldırır, proxy + SSL'i yönetir.
 
 ---
 
