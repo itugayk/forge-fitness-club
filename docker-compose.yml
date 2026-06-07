@@ -4,7 +4,6 @@ services:
       context: .
       dockerfile: Dockerfile
     image: forge-fitness:latest
-    container_name: forge_app
     restart: unless-stopped
     depends_on:
       mysql:
@@ -38,7 +37,6 @@ services:
 
   mysql:
     image: mysql:8.0
-    container_name: forge_mysql
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: forge_fitness
