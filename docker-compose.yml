@@ -1,0 +1,64 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: forge-fitness:latest
+    container_name: forge_app
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    environment:
+      APP_NAME: "Forge Fitness Club"
+      APP_ENV: production
+      APP_KEY: "base64:wFlAGt07apYs7a5nt4B8i4pGBOElnIMFsUDxrC/XUQA="
+      APP_DEBUG: "false"
+      APP_URL: "https://fitness.demo.dijifa.com"
+      APP_LOCALE: tr
+      APP_FALLBACK_LOCALE: en
+      APP_FAKER_LOCALE: tr_TR
+      APP_TIMEZONE: Europe/Istanbul
+      LOG_CHANNEL: stderr
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: "3306"
+      DB_DATABASE: forge_fitness
+      DB_USERNAME: forge
+      DB_PASSWORD: secret
+      SESSION_DRIVER: database
+      CACHE_STORE: database
+      QUEUE_CONNECTION: database
+    volumes:
+      - storage_data:/var/www/html/storage/app
+    networks:
+      - forge
+
+  mysql:
+    image: mysql:8.0
+    container_name: forge_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: forge_fitness
+      MYSQL_USER: forge
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: rootsecret
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    networks:
+      - forge
+
+volumes:
+  mysql_data:
+  storage_data:
+
+networks:
+  forge:
+    driver: bridge
