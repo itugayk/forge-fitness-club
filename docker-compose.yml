@@ -20,7 +20,9 @@ services:
       APP_ENV: production
       APP_KEY: "base64:wFlAGt07apYs7a5nt4B8i4pGBOElnIMFsUDxrC/XUQA="
       APP_DEBUG: "false"
-      APP_URL: "${SERVICE_FQDN_APP:-http://localhost}"
+      # SERVICE_URL_APP carries the scheme (https://...) Coolify derives from the
+      # domain; SERVICE_FQDN_APP is host-only and yielded a scheme-less APP_URL.
+      APP_URL: "${SERVICE_URL_APP:-http://localhost}"
       APP_LOCALE: tr
       APP_FALLBACK_LOCALE: en
       APP_FAKER_LOCALE: tr_TR
